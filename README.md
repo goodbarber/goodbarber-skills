@@ -273,4 +273,4 @@ Want to add a skill? Create a folder in `skills/<app-type>/` with a `SKILL.md` f
 
 ## License
 
-MIT
+[The Unlicense](LICENSE) — public domain, no restrictions.
