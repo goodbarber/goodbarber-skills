@@ -69,7 +69,7 @@ Point your client to the SSE endpoint above. The GoodBarber MCP server follows t
 Clone this repo and copy only the skills for your app type:
 
 ```bash
-git clone https://github.com/sintineddi/goodbarber-skills.git
+git clone https://github.com/goodbarber/goodbarber-skills.git
 ```
 
 **eCommerce app:**
