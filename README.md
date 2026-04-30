@@ -29,12 +29,23 @@ You need to add the GoodBarber MCP server as a **custom connector** in your clie
 
 Replace `<app_id>` with your GoodBarber app ID if you manage multiple apps.
 
+> **Authentication:** the GoodBarber MCP server uses a browser-based OAuth flow.
+>
+> When your MCP client connects to the SSE endpoint, it may open an authorization page on `mcp.goodbarber.dev`. On that page, you will be asked to paste your **GoodBarber Public API key** and validate the authorization. Generate your Public API key from your app's GoodBarber backoffice, on the **Public API / MCP server** page.
+>
+> **Important:**
+> - Do **not** open the `/authorize` URL manually in your browser.
+> - Start from the MCP client by connecting to the SSE endpoint.
+> - The client generates the full authorization request parameters automatically (`redirect_uri`, `client_id`, `state`, `code_challenge`, etc.).
+>
+> If you open the authorization page manually without those parameters, the authentication will fail.
+
 **Claude Desktop (Cowork):**
 
 1. Open **Settings > Connectors**
 2. Click **Add custom connector**
 3. Enter the MCP server URL above
-4. Authenticate with your GoodBarber credentials
+4. The connector opens the GoodBarber authorization page — paste your **Public API key** there and validate
 
 **Claude Code (CLI):**
 
@@ -45,6 +56,8 @@ claude mcp add goodbarber --transport sse https://mcp.goodbarber.dev/mcp/sse
 # Multiple apps
 claude mcp add goodbarber --transport sse https://mcp.goodbarber.dev/<app_id>/mcp/sse
 ```
+
+Then start a Claude Code session — on the first GoodBarber tool call, the CLI will open the GoodBarber authorization page in your browser. Paste your **Public API key** there and validate to complete the OAuth flow.
 
 **Cursor / VS Code / Windsurf:**
 
@@ -60,6 +73,8 @@ Add to your MCP configuration file (`.cursor/mcp.json`, `.vscode/mcp.json`, etc.
 }
 ```
 
+The first connection from your client triggers the OAuth flow in your browser — paste your **Public API key** on the GoodBarber authorization page and validate.
+
 **Any other MCP-compatible client:**
 
 Point your client to the SSE endpoint above. The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
@@ -71,6 +86,8 @@ Clone this repo and copy only the skills for your app type:
 ```bash
 git clone https://github.com/goodbarber/goodbarber-skills.git
 ```
+
+> **Note:** the examples below use Claude's local skills directory (`~/.claude/skills/`). If you use another client, copy the skill folders to the directory expected by that client.
 
 **eCommerce app:**
 ```bash
@@ -88,6 +105,8 @@ cp -r goodbarber-skills/skills/membership/* ~/.claude/skills/
 ```
 
 > **Tip:** If your GoodBarber app combines multiple types (e.g. eCommerce + Membership), install skills from both directories.
+>
+> **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, or `push-broadcast`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
 
 ### 3. Verify
 
