@@ -1,8 +1,8 @@
 # GoodBarber Skills
 
-> 30 AI-powered skills to manage your GoodBarber app with any MCP-compatible client — eCommerce, Community, and Membership.
+> 41 AI-powered skills to manage your GoodBarber app with any MCP-compatible client — eCommerce, Community, Membership, and CMS.
 
-These skills connect to the **GoodBarber MCP server** and give your AI assistant structured workflows to manage your products, orders, customers, promotions, subscriptions, analytics, and more — all from a conversational interface.
+These skills connect to the **GoodBarber MCP server** and give your AI assistant structured workflows to manage your products, orders, customers, promotions, subscriptions, content, analytics, and more — all from a conversational interface.
 
 ---
 
@@ -104,6 +104,13 @@ cp -r goodbarber-skills/skills/community/* ~/.claude/skills/
 cp -r goodbarber-skills/skills/membership/* ~/.claude/skills/
 ```
 
+**CMS / Content (any app with content sections):**
+```bash
+cp -r goodbarber-skills/skills/cms/* ~/.claude/skills/
+```
+
+> **Tip:** CMS skills are cross-cutting — install them alongside any app type that has content sections (articles, agenda, maps, galleries, videos, sounds).
+>
 > **Tip:** If your GoodBarber app combines multiple types (e.g. eCommerce + Membership), install skills from both directories.
 >
 > **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, or `push-broadcast`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
@@ -209,6 +216,49 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 ---
 
+### CMS / Content (11 skills)
+
+Skills for managing editorial content — articles, agenda events, map points of interest, photo galleries, videos, and sounds. Work with any GoodBarber app that has CMS content sections.
+
+<details>
+<summary><strong>Authoring & Publishing</strong></summary>
+
+| Skill | Description |
+|-------|-------------|
+| `article-publish` | Guided creation of a full article: body paragraphs, category, slug, scheduling, paywall |
+| `event-publish` | Create an agenda event with start/end datetime, location, and body content |
+| `place-publish` | Create a map point of interest (address + coordinates) with description |
+| `gallery-builder` | Batch-upload images into a photo gallery and set titles/status |
+| `article-restructure` | Reorder, clean, and fix the body paragraphs of an existing article |
+
+</details>
+
+<details>
+<summary><strong>Quality & Governance</strong></summary>
+
+| Skill | Description |
+|-------|-------------|
+| `content-audit` | Detect incomplete content across all types (no cover, empty body, missing dates/coords) |
+| `draft-review` | Surface stale drafts and unfinished content with a recommended next step |
+| `paywall-audit` | IAP apps: check premium content has a coherent free preview (accessTier, maxFreeParagraphs) |
+| `stale-content-refresh` | Rank aging articles as refresh, re-promote, or retire candidates |
+
+</details>
+
+<details>
+<summary><strong>Planning & Recap</strong></summary>
+
+| Skill | Description |
+|-------|-------------|
+| `editorial-calendar` | Forward view: scheduled publications, upcoming events, expiring content |
+| `weekly-digest` | What published this week + what's scheduled next week, by content type |
+
+</details>
+
+> **Note:** `weekly-digest`, `traffic-report`, and `push-broadcast` names recur across app types. The CMS skills are namespaced by a `cms-` prefix in their frontmatter (e.g. `cms-weekly-digest`) to avoid collisions — keep them in a separate folder if you install skills from multiple directories.
+
+---
+
 ## Usage Examples
 
 ```
@@ -229,6 +279,15 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 "Give me my weekly digest"
 → weekly-digest
+
+"Write and publish an article about our new opening hours"
+→ article-publish (cms)
+
+"What content is scheduled to go live next week?"
+→ editorial-calendar (cms)
+
+"Audit my content for missing covers and empty posts"
+→ content-audit (cms)
 ```
 
 ---
@@ -277,9 +336,15 @@ goodbarber-skills/
     │   ├── push-broadcast/SKILL.md
     │   ├── traffic-report/SKILL.md
     │   └── weekly-digest/SKILL.md
-    └── membership/
-        ├── subscription-audit/SKILL.md
-        ├── expiration-calendar/SKILL.md
+    ├── membership/
+    │   ├── subscription-audit/SKILL.md
+    │   ├── expiration-calendar/SKILL.md
+    │   ├── ...
+    │   └── weekly-digest/SKILL.md
+    └── cms/
+        ├── article-publish/SKILL.md
+        ├── content-audit/SKILL.md
+        ├── editorial-calendar/SKILL.md
         ├── ...
         └── weekly-digest/SKILL.md
 ```
