@@ -1,6 +1,6 @@
 # GoodBarber Skills
 
-> 41 AI-powered skills to manage your GoodBarber app with any MCP-compatible client — eCommerce, Community, Membership, and CMS.
+> 44 AI-powered skills to manage your GoodBarber app with any MCP-compatible client — eCommerce, Community, Membership, and CMS.
 
 These skills connect to the **GoodBarber MCP server** and give your AI assistant structured workflows to manage your products, orders, customers, promotions, subscriptions, content, analytics, and more — all from a conversational interface.
 
@@ -113,7 +113,7 @@ cp -r goodbarber-skills/skills/cms/* ~/.claude/skills/
 >
 > **Tip:** If your GoodBarber app combines multiple types (e.g. eCommerce + Membership), install skills from both directories.
 >
-> **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, or `push-broadcast`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
+> **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, `push-broadcast`, or `push-targeted`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
 
 ### 3. Verify
 
@@ -123,7 +123,7 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 ## Skills by App Type
 
-### eCommerce (17 skills)
+### eCommerce (18 skills)
 
 <details>
 <summary><strong>Catalog & Products</strong></summary>
@@ -170,24 +170,26 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 | `traffic-report` | App-level analytics: page views, launches, sessions, platforms |
 | `kpi-monitor` | Threshold-based daily/weekly KPI health alerts |
 | `weekly-digest` | Automated weekly business recap |
-| `push-broadcast` | Compose, preview, and send a push notification to all customers |
+| `push-broadcast` | Compose, preview, schedule, and send a push notification to all customers |
+| `push-targeted` | Compose, preview, schedule, and send a push to specific customers or prospects |
 
 </details>
 
 ---
 
-### Community (4 skills)
+### Community (5 skills)
 
 | Skill | Description |
 |-------|-------------|
 | `traffic-report` | App analytics: page views, launches, sessions by platform |
-| `push-broadcast` | Send a push to everyone or to a specific community group |
+| `push-broadcast` | Send a push to everyone or to specific community groups |
+| `push-targeted` | Send a push to specific community users |
 | `device-landscape` | Platform distribution, top devices, OS versions |
 | `weekly-digest` | Weekly community activity recap |
 
 ---
 
-### Membership (9 skills)
+### Membership (10 skills)
 
 <details>
 <summary><strong>Subscriptions</strong></summary>
@@ -208,7 +210,8 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 |-------|-------------|
 | `prospect-followup` | Prioritize membership prospects for conversion |
 | `traffic-report` | App analytics: page views, launches, sessions by platform |
-| `push-broadcast` | Send a push notification to all subscribers |
+| `push-broadcast` | Send a push notification to all eligible users |
+| `push-targeted` | Send a push to specific users or subscription-status audiences |
 | `device-landscape` | Platform distribution, top devices, OS versions |
 | `weekly-digest` | Weekly membership business recap |
 
@@ -255,7 +258,7 @@ Skills for managing editorial content — articles, agenda events, map points of
 
 </details>
 
-> **Note:** `weekly-digest`, `traffic-report`, and `push-broadcast` names recur across app types. The CMS skills are namespaced by a `cms-` prefix in their frontmatter (e.g. `cms-weekly-digest`) to avoid collisions — keep them in a separate folder if you install skills from multiple directories.
+> **Note:** `weekly-digest`, `traffic-report`, `push-broadcast`, and `push-targeted` names recur across app types. The CMS skills are namespaced by a `cms-` prefix in their frontmatter (e.g. `cms-weekly-digest`) to avoid collisions — keep them in a separate folder if you install skills from multiple directories.
 
 ---
 
@@ -276,6 +279,12 @@ Skills for managing editorial content — articles, agenda events, map points of
 
 "Send a push to the Paris group: meetup Friday at 7pm"
 → push-broadcast (community)
+
+"Send a push to Marie and Alex: your item is back in stock"
+→ push-targeted (eCommerce)
+
+"Notify expired subscribers about the renewal offer tomorrow at 9am"
+→ push-targeted (membership)
 
 "Give me my weekly digest"
 → weekly-digest
@@ -330,16 +339,20 @@ goodbarber-skills/
     │   ├── catalog-audit/SKILL.md
     │   ├── customer-insights/SKILL.md
     │   ├── ...
+    │   ├── push-targeted/SKILL.md
     │   └── weekly-digest/SKILL.md
     ├── community/
     │   ├── device-landscape/SKILL.md
     │   ├── push-broadcast/SKILL.md
+    │   ├── push-targeted/SKILL.md
     │   ├── traffic-report/SKILL.md
     │   └── weekly-digest/SKILL.md
     ├── membership/
     │   ├── subscription-audit/SKILL.md
     │   ├── expiration-calendar/SKILL.md
     │   ├── ...
+    │   ├── push-broadcast/SKILL.md
+    │   ├── push-targeted/SKILL.md
     │   └── weekly-digest/SKILL.md
     └── cms/
         ├── article-publish/SKILL.md
