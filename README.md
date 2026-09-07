@@ -10,7 +10,7 @@ These skills connect to the **GoodBarber MCP server** and give your AI assistant
 
 Skills are instruction files (`.md`) that teach an AI assistant **how** to perform specific tasks using your GoodBarber app's API via MCP (Model Context Protocol). Instead of manually calling API tools one by one, a skill orchestrates the full workflow — from data retrieval to formatted report — in a single natural-language request.
 
-For example, asking *"Show me my best sellers this month"* triggers the `best-sellers` skill, which automatically fetches your orders and catalog, computes rankings, and returns a formatted report.
+For example, asking *"Show me my best sellers this month"* triggers the `shop-best-sellers` skill, which automatically fetches your orders and catalog, computes rankings, and returns a formatted report.
 
 ---
 
@@ -133,7 +133,7 @@ cp -r goodbarber-skills/skills/cms/* ~/.claude/skills/
 >
 > **Tip:** If your GoodBarber app combines multiple types (e.g. eCommerce + Membership), install skills from both directories.
 >
-> **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, `push-broadcast`, or `push-targeted`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
+> **Note:** skill directory names carry their family prefix (`shop-`, `community-`, `membership-`, `cms-`) and are unique, so skills from several families can live in the same destination without collisions.
 
 #### 3. Verify
 
@@ -150,13 +150,13 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `best-sellers` | Rank products by sales volume and revenue over a given period |
-| `catalog-audit` | Detect incomplete product sheets (missing images, descriptions, variants) |
-| `low-performers` | Identify products with zero or very low sales |
-| `orphan-products` | Find products not assigned to any collection |
-| `product-launch` | Guided creation of a full product with variants, images, and SEO |
-| `stock-check` | Audit stock levels — flag out-of-stock and low-stock items |
-| `reorder-planner` | Generate a supplier-ready replenishment queue based on sales velocity |
+| `shop-best-sellers` | Rank products by sales volume and revenue over a given period |
+| `shop-catalog-audit` | Detect incomplete product sheets (missing images, descriptions, variants) |
+| `shop-low-performers` | Identify products with zero or very low sales |
+| `shop-orphan-products` | Find products not assigned to any collection |
+| `shop-product-launch` | Guided creation of a full product with variants, images, and SEO |
+| `shop-stock-check` | Audit stock levels — flag out-of-stock and low-stock items |
+| `shop-reorder-planner` | Generate a supplier-ready replenishment queue based on sales velocity |
 
 </details>
 
@@ -165,10 +165,10 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `order-followup` | To-do list of orders to process (pending, to ship, to deliver) |
-| `customer-insights` | Segment customers into VIP, loyal, dormant, and one-shot profiles |
-| `rfm-segmentation` | Recency / Frequency / Monetary customer segmentation |
-| `prospect-nurture` | Prioritize prospects and suggest conversion actions |
+| `shop-order-followup` | To-do list of orders to process (pending, to ship, to deliver) |
+| `shop-customer-insights` | Segment customers into VIP, loyal, dormant, and one-shot profiles |
+| `shop-rfm-segmentation` | Recency / Frequency / Monetary customer segmentation |
+| `shop-prospect-nurture` | Prioritize prospects and suggest conversion actions |
 
 </details>
 
@@ -177,8 +177,8 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `promo-campaign` | Create a promo code + send an announcement push in one workflow |
-| `promo-performance-review` | Analyze promo impact: before, during, and after the campaign |
+| `shop-promo-campaign` | Create a promo code + send an announcement push in one workflow |
+| `shop-promo-performance-review` | Analyze promo impact: before, during, and after the campaign |
 
 </details>
 
@@ -187,11 +187,11 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `traffic-report` | App-level analytics: page views, launches, sessions, platforms |
-| `kpi-monitor` | Threshold-based daily/weekly KPI health alerts |
-| `weekly-digest` | Automated weekly business recap |
-| `push-broadcast` | Compose, preview, schedule, and send a push notification to all customers |
-| `push-targeted` | Compose, preview, schedule, and send a push to specific customers or prospects |
+| `shop-traffic-report` | App-level analytics: page views, launches, sessions, platforms |
+| `shop-kpi-monitor` | Threshold-based daily/weekly KPI health alerts |
+| `shop-weekly-digest` | Automated weekly business recap |
+| `shop-push-broadcast` | Compose, preview, schedule, and send a push notification to all customers |
+| `shop-push-targeted` | Compose, preview, schedule, and send a push to specific customers or prospects |
 
 </details>
 
@@ -201,11 +201,11 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `traffic-report` | App analytics: page views, launches, sessions by platform |
-| `push-broadcast` | Send a push to everyone or to specific community groups |
-| `push-targeted` | Send a push to specific community users |
-| `device-landscape` | Platform distribution, top devices, OS versions |
-| `weekly-digest` | Weekly community activity recap |
+| `community-traffic-report` | App analytics: page views, launches, sessions by platform |
+| `community-push-broadcast` | Send a push to everyone or to specific community groups |
+| `community-push-targeted` | Send a push to specific community users |
+| `community-device-landscape` | Platform distribution, top devices, OS versions |
+| `community-weekly-digest` | Weekly community activity recap |
 
 ---
 
@@ -216,10 +216,10 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `subscription-audit` | Active vs expired, churn rate, at-risk subscribers, winback opportunities |
-| `expiration-calendar` | Upcoming subscription expirations timeline |
-| `longest-subscribers` | Identify your most loyal long-term subscribers |
-| `internal-subscription-grant` | Create, update, or revoke internal subscriptions |
+| `membership-subscription-audit` | Active vs expired, churn rate, at-risk subscribers, winback opportunities |
+| `membership-expiration-calendar` | Upcoming subscription expirations timeline |
+| `membership-longest-subscribers` | Identify your most loyal long-term subscribers |
+| `membership-internal-subscription-grant` | Create, update, or revoke internal subscriptions |
 
 </details>
 
@@ -228,12 +228,12 @@ Ask your AI assistant: *"What skills do you have?"* — it should list the insta
 
 | Skill | Description |
 |-------|-------------|
-| `prospect-followup` | Prioritize membership prospects for conversion |
-| `traffic-report` | App analytics: page views, launches, sessions by platform |
-| `push-broadcast` | Send a push notification to all eligible users |
-| `push-targeted` | Send a push to specific users or subscription-status audiences |
-| `device-landscape` | Platform distribution, top devices, OS versions |
-| `weekly-digest` | Weekly membership business recap |
+| `membership-prospect-followup` | Prioritize membership prospects for conversion |
+| `membership-traffic-report` | App analytics: page views, launches, sessions by platform |
+| `membership-push-broadcast` | Send a push notification to all eligible users |
+| `membership-push-targeted` | Send a push to specific users or subscription-status audiences |
+| `membership-device-landscape` | Platform distribution, top devices, OS versions |
+| `membership-weekly-digest` | Weekly membership business recap |
 
 </details>
 
@@ -248,11 +248,11 @@ Skills for managing editorial content — articles, agenda events, map points of
 
 | Skill | Description |
 |-------|-------------|
-| `article-publish` | Guided creation of a full article: body paragraphs, category, slug, scheduling, paywall |
-| `event-publish` | Create an agenda event with start/end datetime, location, and body content |
-| `place-publish` | Create a map point of interest (address + coordinates) with description |
-| `gallery-builder` | Batch-upload images into a photo gallery and set titles/status |
-| `article-restructure` | Reorder, clean, and fix the body paragraphs of an existing article |
+| `cms-article-publish` | Guided creation of a full article: body paragraphs, category, slug, scheduling, paywall |
+| `cms-event-publish` | Create an agenda event with start/end datetime, location, and body content |
+| `cms-place-publish` | Create a map point of interest (address + coordinates) with description |
+| `cms-gallery-builder` | Batch-upload images into a photo gallery and set titles/status |
+| `cms-article-restructure` | Reorder, clean, and fix the body paragraphs of an existing article |
 
 </details>
 
@@ -261,10 +261,10 @@ Skills for managing editorial content — articles, agenda events, map points of
 
 | Skill | Description |
 |-------|-------------|
-| `content-audit` | Detect incomplete content across all types (no cover, empty body, missing dates/coords) |
-| `draft-review` | Surface stale drafts and unfinished content with a recommended next step |
-| `paywall-audit` | IAP apps: check premium content has a coherent free preview (accessTier, maxFreeParagraphs) |
-| `stale-content-refresh` | Rank aging articles as refresh, re-promote, or retire candidates |
+| `cms-content-audit` | Detect incomplete content across all types (no cover, empty body, missing dates/coords) |
+| `cms-draft-review` | Surface stale drafts and unfinished content with a recommended next step |
+| `cms-paywall-audit` | IAP apps: check premium content has a coherent free preview (accessTier, maxFreeParagraphs) |
+| `cms-stale-content-refresh` | Rank aging articles as refresh, re-promote, or retire candidates |
 
 </details>
 
@@ -273,8 +273,8 @@ Skills for managing editorial content — articles, agenda events, map points of
 
 | Skill | Description |
 |-------|-------------|
-| `editorial-calendar` | Forward view: scheduled publications, upcoming events, expiring content |
-| `weekly-digest` | What published this week + what's scheduled next week, by content type |
+| `cms-editorial-calendar` | Forward view: scheduled publications, upcoming events, expiring content |
+| `cms-weekly-digest` | What published this week + what's scheduled next week, by content type |
 
 </details>
 
@@ -352,34 +352,59 @@ These skills work with any MCP-compatible AI client, including:
 
 ```
 goodbarber-skills/
+├── .claude-plugin/plugin.json
+├── .mcp.json
 ├── README.md
+├── SETUP.md
 └── skills/
     ├── ecommerce/
-    │   ├── best-sellers/SKILL.md
-    │   ├── catalog-audit/SKILL.md
-    │   ├── customer-insights/SKILL.md
-    │   ├── ...
-    │   ├── push-targeted/SKILL.md
-    │   └── weekly-digest/SKILL.md
+    │   ├── shop-best-sellers/SKILL.md
+    │   ├── shop-catalog-audit/SKILL.md
+    │   ├── shop-customer-insights/SKILL.md
+    │   ├── shop-kpi-monitor/SKILL.md
+    │   ├── shop-low-performers/SKILL.md
+    │   ├── shop-order-followup/SKILL.md
+    │   ├── shop-orphan-products/SKILL.md
+    │   ├── shop-product-launch/SKILL.md
+    │   ├── shop-promo-campaign/SKILL.md
+    │   ├── shop-promo-performance-review/SKILL.md
+    │   ├── shop-prospect-nurture/SKILL.md
+    │   ├── shop-push-broadcast/SKILL.md
+    │   ├── shop-push-targeted/SKILL.md
+    │   ├── shop-reorder-planner/SKILL.md
+    │   ├── shop-rfm-segmentation/SKILL.md
+    │   ├── shop-stock-check/SKILL.md
+    │   ├── shop-traffic-report/SKILL.md
+    │   └── shop-weekly-digest/SKILL.md
     ├── community/
-    │   ├── device-landscape/SKILL.md
-    │   ├── push-broadcast/SKILL.md
-    │   ├── push-targeted/SKILL.md
-    │   ├── traffic-report/SKILL.md
-    │   └── weekly-digest/SKILL.md
+    │   ├── community-device-landscape/SKILL.md
+    │   ├── community-push-broadcast/SKILL.md
+    │   ├── community-push-targeted/SKILL.md
+    │   ├── community-traffic-report/SKILL.md
+    │   └── community-weekly-digest/SKILL.md
     ├── membership/
-    │   ├── subscription-audit/SKILL.md
-    │   ├── expiration-calendar/SKILL.md
-    │   ├── ...
-    │   ├── push-broadcast/SKILL.md
-    │   ├── push-targeted/SKILL.md
-    │   └── weekly-digest/SKILL.md
+    │   ├── membership-device-landscape/SKILL.md
+    │   ├── membership-expiration-calendar/SKILL.md
+    │   ├── membership-internal-subscription-grant/SKILL.md
+    │   ├── membership-longest-subscribers/SKILL.md
+    │   ├── membership-prospect-followup/SKILL.md
+    │   ├── membership-push-broadcast/SKILL.md
+    │   ├── membership-push-targeted/SKILL.md
+    │   ├── membership-subscription-audit/SKILL.md
+    │   ├── membership-traffic-report/SKILL.md
+    │   └── membership-weekly-digest/SKILL.md
     └── cms/
-        ├── article-publish/SKILL.md
-        ├── content-audit/SKILL.md
-        ├── editorial-calendar/SKILL.md
-        ├── ...
-        └── weekly-digest/SKILL.md
+        ├── cms-article-publish/SKILL.md
+        ├── cms-article-restructure/SKILL.md
+        ├── cms-content-audit/SKILL.md
+        ├── cms-draft-review/SKILL.md
+        ├── cms-editorial-calendar/SKILL.md
+        ├── cms-event-publish/SKILL.md
+        ├── cms-gallery-builder/SKILL.md
+        ├── cms-paywall-audit/SKILL.md
+        ├── cms-place-publish/SKILL.md
+        ├── cms-stale-content-refresh/SKILL.md
+        └── cms-weekly-digest/SKILL.md
 ```
 
 ---
