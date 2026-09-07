@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "goodbarber": {
+      "type": "http",
+      "url": "https://mcp.goodbarber.dev/mcp/sse"
+    }
+  }
+}

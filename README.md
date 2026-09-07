@@ -16,7 +16,27 @@ For example, asking *"Show me my best sellers this month"* triggers the `best-se
 
 ## Quick Start
 
-### 1. Connect the GoodBarber MCP
+### Option A — Install as a Claude Code plugin
+
+The repo is a Claude Code plugin: it ships the GoodBarber MCP server (`.mcp.json`) and the 44 skills in one package.
+
+```bash
+git clone https://github.com/goodbarber/goodbarber-skills.git
+claude --plugin-dir ./goodbarber-skills
+```
+
+Once the plugin is listed in the community marketplace, install it from any session instead:
+
+```
+/plugin marketplace add anthropics/claude-plugins-community
+/plugin install goodbarber@claude-community
+```
+
+On the first GoodBarber tool call, Claude Code opens the authorization page: paste your **Public API key** and validate. Details in [SETUP.md](SETUP.md).
+
+### Option B — Manual setup (any MCP client)
+
+#### 1. Connect the GoodBarber MCP
 
 You need to add the GoodBarber MCP server as a **custom connector** in your client. The MCP server uses Server-Sent Events (SSE).
 
@@ -79,7 +99,7 @@ The first connection from your client triggers the OAuth flow in your browser �
 
 Point your client to the SSE endpoint above. The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
 
-### 2. Install the skills
+#### 2. Install the skills
 
 Clone this repo and copy only the skills for your app type:
 
@@ -115,7 +135,7 @@ cp -r goodbarber-skills/skills/cms/* ~/.claude/skills/
 >
 > **Warning:** some skill names are shared across app types (for example `weekly-digest`, `traffic-report`, `push-broadcast`, or `push-targeted`). If you install skills from multiple directories into the same destination, rename them or place them in separate namespaces to avoid collisions.
 
-### 3. Verify
+#### 3. Verify
 
 Ask your AI assistant: *"What skills do you have?"* — it should list the installed GoodBarber skills.
 

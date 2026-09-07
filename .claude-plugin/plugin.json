@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "goodbarber",
+  "displayName": "GoodBarber",
+  "version": "1.0.0",
+  "description": "GoodBarber no-code app builder: 44 skills plus the GoodBarber MCP server to manage your mobile app's shop, content, community and membership by chat.",
+  "author": {
+    "name": "GoodBarber",
+    "url": "https://www.goodbarber.com"
+  },
+  "homepage": "https://www.goodbarber.com/mcp/",
+  "repository": "https://github.com/goodbarber/goodbarber-skills",
+  "license": "Unlicense",
+  "keywords": [
+    "goodbarber",
+    "no-code",
+    "app-builder",
+    "mobile-app",
+    "ecommerce",
+    "cms",
+    "community",
+    "membership",
+    "mcp"
+  ],
+  "skills": [
+    "./skills/cms",
+    "./skills/community",
+    "./skills/ecommerce",
+    "./skills/membership"
+  ]
+}
