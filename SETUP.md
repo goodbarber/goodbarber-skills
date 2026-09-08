@@ -2,7 +2,7 @@
 
 The GoodBarber plugin bundles two things:
 
-- the **GoodBarber MCP server** (`https://mcp.goodbarber.dev/mcp/sse`, Streamable HTTP, OAuth 2.1), declared in `.mcp.json`;
+- the **GoodBarber MCP server** (`https://mcp.goodbarber.dev/mcp/sse`, MCP 2026-07-28 protocol over Streamable HTTP, OAuth 2.1; the path name is historical), declared in `.mcp.json`;
 - **44 skills** (eCommerce, CMS, Community, Membership) that orchestrate the MCP tools into complete workflows.
 
 ## 1. Get your Public API key

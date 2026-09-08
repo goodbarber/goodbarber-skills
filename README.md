@@ -38,7 +38,7 @@ On the first GoodBarber tool call, Claude Code opens the authorization page: pas
 
 #### 1. Connect the GoodBarber MCP
 
-You need to add the GoodBarber MCP server as a **custom connector** in your client. The server speaks **Streamable HTTP** (MCP 2025-03-26 and later, including the 2026-07-28 protocol); the `/mcp/sse` path is kept for compatibility with existing configurations.
+You need to add the GoodBarber MCP server as a **custom connector** in your client. The server implements the **MCP 2026-07-28 protocol** over Streamable HTTP (earlier handshake-era clients still connect). The `/mcp/sse` path name is historical and kept only for backward compatibility.
 
 **MCP Server URLs:**
 
@@ -97,7 +97,7 @@ The first connection from your client triggers the OAuth flow in your browser â€
 
 **Any other MCP-compatible client:**
 
-Point your client to the MCP endpoint above using its Streamable HTTP transport. The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
+Point your client to the MCP endpoint above (Streamable HTTP). The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
 
 #### 2. Install the skills
 
