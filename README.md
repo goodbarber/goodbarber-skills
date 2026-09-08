@@ -2,6 +2,8 @@
 
 > 44 AI-powered skills to manage your GoodBarber app with any MCP-compatible client — eCommerce, Community, Membership, and CMS.
 
+Listed on [Smithery](https://smithery.ai/servers/goodbarber/goodbarber-public-mcp).
+
 These skills connect to the **GoodBarber MCP server** and give your AI assistant structured workflows to manage your products, orders, customers, promotions, subscriptions, content, analytics, and more — all from a conversational interface.
 
 ---
