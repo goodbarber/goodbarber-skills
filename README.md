@@ -38,7 +38,7 @@ On the first GoodBarber tool call, Claude Code opens the authorization page: pas
 
 #### 1. Connect the GoodBarber MCP
 
-You need to add the GoodBarber MCP server as a **custom connector** in your client. The MCP server uses Server-Sent Events (SSE).
+You need to add the GoodBarber MCP server as a **custom connector** in your client. The server speaks **Streamable HTTP** (MCP 2025-03-26 and later, including the 2026-07-28 protocol); the `/mcp/sse` path is kept for compatibility with existing configurations.
 
 **MCP Server URLs:**
 
@@ -51,11 +51,11 @@ Replace `<app_id>` with your GoodBarber app ID if you manage multiple apps.
 
 > **Authentication:** the GoodBarber MCP server uses a browser-based OAuth flow.
 >
-> When your MCP client connects to the SSE endpoint, it may open an authorization page on `mcp.goodbarber.dev`. On that page, you will be asked to paste your **GoodBarber Public API key** and validate the authorization. Generate your Public API key from your app's GoodBarber backoffice, on the **Public API / MCP server** page.
+> When your MCP client connects to the MCP endpoint, it may open an authorization page on `mcp.goodbarber.dev`. On that page, you will be asked to paste your **GoodBarber Public API key** and validate the authorization. Generate your Public API key from your app's GoodBarber backoffice, on the **Public API / MCP server** page.
 >
 > **Important:**
 > - Do **not** open the `/authorize` URL manually in your browser.
-> - Start from the MCP client by connecting to the SSE endpoint.
+> - Start from the MCP client by connecting to the MCP endpoint.
 > - The client generates the full authorization request parameters automatically (`redirect_uri`, `client_id`, `state`, `code_challenge`, etc.).
 >
 > If you open the authorization page manually without those parameters, the authentication will fail.
@@ -71,10 +71,10 @@ Replace `<app_id>` with your GoodBarber app ID if you manage multiple apps.
 
 ```bash
 # Single app
-claude mcp add goodbarber --transport sse https://mcp.goodbarber.dev/mcp/sse
+claude mcp add goodbarber --transport http https://mcp.goodbarber.dev/mcp/sse
 
 # Multiple apps
-claude mcp add goodbarber --transport sse https://mcp.goodbarber.dev/<app_id>/mcp/sse
+claude mcp add goodbarber --transport http https://mcp.goodbarber.dev/<app_id>/mcp/sse
 ```
 
 Then start a Claude Code session â€” on the first GoodBarber tool call, the CLI will open the GoodBarber authorization page in your browser. Paste your **Public API key** there and validate to complete the OAuth flow.
@@ -97,7 +97,7 @@ The first connection from your client triggers the OAuth flow in your browser â€
 
 **Any other MCP-compatible client:**
 
-Point your client to the SSE endpoint above. The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
+Point your client to the MCP endpoint above using its Streamable HTTP transport. The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
 
 #### 2. Install the skills
 
