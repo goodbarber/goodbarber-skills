@@ -356,6 +356,7 @@ goodbarber-skills/
 ├── .mcp.json
 ├── README.md
 ├── SETUP.md
+├── server.json        # manifest published to the official MCP registry (dev.goodbarber/goodbarber-public-mcp)
 └── skills/
     ├── ecommerce/
     │   ├── shop-best-sellers/SKILL.md

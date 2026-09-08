@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.goodbarber/goodbarber-public-mcp",
+  "title": "GoodBarber",
+  "description": "No-code app builder: manage your GoodBarber mobile app, shop, community and content. MCP 2026-07-28.",
+  "version": "1.2.1",
+  "repository": {
+    "url": "https://github.com/goodbarber/goodbarber-skills",
+    "source": "github"
+  },
+  "websiteUrl": "https://www.goodbarber.com/mcp/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.goodbarber.dev/mcp/sse"
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "mcpProtocolVersions": {
+        "modern": [
+          "2026-07-28"
+        ],
+        "handshake": [
+          "2024-11-05",
+          "2025-03-26",
+          "2025-06-18",
+          "2025-11-25"
+        ]
+      },
+      "sdk": "mcp==2.0.0",
+      "serverCard": "https://mcp.goodbarber.dev/.well-known/mcp/server-card.json"
+    }
+  }
+}
