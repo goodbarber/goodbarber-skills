@@ -412,6 +412,16 @@ goodbarber-skills/
 
 ---
 
+## Install with the skills CLI
+
+The [skills CLI](https://skills.sh) installs these skills into any supported agent (Claude Code, Cursor, Codex, GitHub Copilot, Windsurf, Gemini CLI, Antigravity, Cline and more) in one command:
+
+```bash
+npx skills add goodbarber/goodbarber-skills
+```
+
+Pick the skills you need from the list, or install all 44 with `--all`. The skills call the GoodBarber MCP server, so connect it first (see "Install the MCP server" above).
+
 ## Contributing
 
 Want to add a skill? Create a folder in `skills/<app-type>/` with a `SKILL.md` file. Follow the existing format: YAML frontmatter (`name`, `description`, `compatibility`) + markdown instructions with tool workflow, input/output contracts, and guardrails.
