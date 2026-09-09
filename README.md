@@ -97,6 +97,25 @@ Add to your MCP configuration file (`.cursor/mcp.json`, `.vscode/mcp.json`, etc.
 
 The first connection from your client triggers the OAuth flow in your browser — paste your **Public API key** on the GoodBarber authorization page and validate.
 
+**Cline:**
+
+Open MCP Servers in Cline, choose "Remote server", transport Streamable HTTP, URL `https://mcp.goodbarber.dev/mcp/sse`, or add this to `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "goodbarber": {
+      "type": "streamableHttp",
+      "url": "https://mcp.goodbarber.dev/mcp/sse",
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+On the first connection Cline opens the GoodBarber authorization page in your browser — paste your **Public API token** there and validate. No API key in the config, no environment variable. Agents can also follow [`llms-install.md`](llms-install.md).
+
 **Any other MCP-compatible client:**
 
 Point your client to the MCP endpoint above (Streamable HTTP). The GoodBarber MCP server follows the standard MCP protocol and works with any compliant client.
@@ -413,6 +432,8 @@ goodbarber-skills/
 ---
 
 ## Install with the skills CLI
+
+[![skills.sh](https://skills.sh/b/goodbarber/goodbarber-skills)](https://skills.sh/goodbarber/goodbarber-skills)
 
 The [skills CLI](https://skills.sh) installs these skills into any supported agent (Claude Code, Cursor, Codex, GitHub Copilot, Windsurf, Gemini CLI, Antigravity, Cline and more) in one command:
 
