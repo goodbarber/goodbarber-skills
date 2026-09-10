@@ -160,6 +160,18 @@ cp -r goodbarber-skills/skills/cms/* ~/.claude/skills/
 
 Ask your AI assistant: *"What skills do you have?"* — it should list the installed GoodBarber skills.
 
+### Option C — Install in Grok Build
+
+The same package is a Grok Build plugin: `.grok-plugin/plugin.json` lists the 44 skills and `.mcp.json` declares the GoodBarber MCP server.
+
+```bash
+grok plugin install goodbarber/goodbarber-skills --trust
+```
+
+Once the plugin is listed in the [xAI plugin marketplace](https://github.com/xai-org/plugin-marketplace), install it by name instead (`grok plugin install goodbarber --trust`) or pick it in `/marketplace`.
+
+On the first GoodBarber tool call, Grok opens the authorization page in your browser: paste your **Public API key** and validate. Use `/mcps` to check the connection and `/skills` to list the 44 skills. Details in [SETUP.md](SETUP.md).
+
 ---
 
 ## Skills by App Type
@@ -365,6 +377,7 @@ These skills work with any MCP-compatible AI client, including:
 - Windsurf
 - Codex CLI
 - Gemini CLI
+- Grok Build (CLI)
 - Any client supporting the Model Context Protocol
 
 ---
@@ -374,6 +387,7 @@ These skills work with any MCP-compatible AI client, including:
 ```
 goodbarber-skills/
 ├── .claude-plugin/plugin.json
+├── .grok-plugin/plugin.json   # Grok Build manifest (lists the 44 skills)
 ├── .mcp.json
 ├── README.md
 ├── SETUP.md

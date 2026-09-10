@@ -13,16 +13,16 @@ The GoodBarber plugin bundles two things:
 
 ## 2. Authorize the MCP server
 
-Nothing to configure by hand. On the first GoodBarber tool call, Claude Code opens the GoodBarber authorization page in your browser:
+Nothing to configure by hand. On the first GoodBarber tool call, your client (Claude Code, Grok Build) opens the GoodBarber authorization page in your browser:
 
 1. Paste your **Public API key**.
 2. Validate.
 
-The OAuth flow completes and the token is stored by Claude Code. Do **not** open `https://mcp.goodbarber.dev/authorize` manually: the client generates the required parameters (`redirect_uri`, `client_id`, `state`, `code_challenge`) and a manual visit fails.
+The OAuth flow completes and the token is stored by the client. Do **not** open `https://mcp.goodbarber.dev/authorize` manually: the client generates the required parameters (`redirect_uri`, `client_id`, `state`, `code_challenge`) and a manual visit fails.
 
 ## 3. Check the connection
 
-Ask Claude: *"What GoodBarber tools do you have?"* or run `/mcp` and confirm `goodbarber` is connected. Then try a skill, for example: *"Show me my best sellers this month"*.
+Ask Claude: *"What GoodBarber tools do you have?"* or run `/mcp` and confirm `goodbarber` is connected. In Grok Build, run `/mcps` (connection) and `/skills` (the 44 skills). Then try a skill, for example: *"Show me my best sellers this month"*.
 
 ## Several apps on the same account
 

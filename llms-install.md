@@ -27,6 +27,8 @@ This file guides an AI coding agent (Cline, Claude Code, Cursor, Codex, Windsurf
 
 **Gemini CLI** — `gemini mcp add --transport http goodbarber https://mcp.goodbarber.dev/mcp/sse` (or `gemini extensions install https://github.com/goodbarber/goodbarber-skills`)
 
+**Grok Build** — `grok mcp add --transport http goodbarber https://mcp.goodbarber.dev/mcp/sse` (or install the plugin with the 44 skills: `grok plugin install goodbarber/goodbarber-skills --trust`)
+
 ## 2. Authorize
 
 The server answers the first request with `401` and OAuth 2.1 metadata (dynamic client registration, PKCE). The client opens the GoodBarber authorization page in the browser: the user pastes the **Public API token** created in the app's back office (Public API / MCP server page) and validates. Do not put any key or token in the configuration file; there is no environment variable to set.
@@ -55,4 +57,4 @@ Each token is tied to one app. Add one server per app with `https://mcp.goodbarb
 
 - **Authorization page loops or rejects the token**: create a new Public API token in the back office and paste it again.
 - **Tools are missing**: the token's rights do not cover that family; edit the rights of the token in the back office.
-- **Older client without OAuth support**: use a client that supports OAuth for remote MCP servers (Cline, Claude Code, Cursor, Codex, Windsurf, VS Code do).
+- **Older client without OAuth support**: use a client that supports OAuth for remote MCP servers (Cline, Claude Code, Cursor, Codex, Windsurf, VS Code, Grok Build do).
