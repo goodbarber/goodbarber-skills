@@ -4,7 +4,10 @@
   "description": "Manage a GoodBarber no-code app by conversation: shop, content, push notifications, customers and analytics, through the GoodBarber MCP server (OAuth 2.1, 150 tools).",
   "mcpServers": {
     "goodbarber": {
-      "httpUrl": "https://mcp.goodbarber.dev/mcp/sse"
+      "httpUrl": "https://mcp.goodbarber.dev/mcp/sse",
+      "oauth": {
+        "enabled": true
+      }
     }
   }
 }
